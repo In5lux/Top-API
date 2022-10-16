@@ -6,8 +6,6 @@ import { CreateReviewDto } from '../src/review/dto/create-review.dto';
 import { Types, disconnect } from 'mongoose';
 import { REVIEW_NOT_FOUND } from '../src/review/review.constants';
 
-//jest.setTimeout(100000);
-
 const productId = new Types.ObjectId().toHexString();
 
 const testDto: CreateReviewDto = {
