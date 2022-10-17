@@ -4,6 +4,7 @@ import * as request from 'supertest';
 import { AppModule } from '../src/app.module';
 import { disconnect } from 'mongoose';
 import { AuthDto } from '../src/auth/dto/auth.dto';
+import { USER_NOT_FOUND_ERROR, WRONG_PASSWORD_ERROR } from '../src/auth/auth.constants';
 
 const loginDto: AuthDto = {
 	login: 'a@a.ru',
@@ -39,7 +40,7 @@ describe('AuthController (e2e)', () => {
 			.send({...loginDto, password: '0'})
       .expect(401, {
 				statusCode: 401,
-				message: 'Неверный пароль',
+				message: WRONG_PASSWORD_ERROR,
 				error: 'Unauthorized'
 			})			   
   });
@@ -50,7 +51,7 @@ describe('AuthController (e2e)', () => {
 			.send({...loginDto, login: 'aaa@a.ru'})
       .expect(401, {
 				statusCode: 401,
-				message: 'Пользователь с таким email не найден',
+				message: USER_NOT_FOUND_ERROR,
 				error: 'Unauthorized'
 			})			   
   });
