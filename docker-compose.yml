@@ -1,7 +1,7 @@
 version: '3'
 services:
   top.api:
-    image: top_api_d:latest
+    image: docker.pkg.github.com/in5lux/top-api/top-api:develop
     container_name: top-api
     restart: always
     ports:
